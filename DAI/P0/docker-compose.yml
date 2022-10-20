@@ -1,0 +1,8 @@
+# docker-compose.yml
+
+services:
+  contenedor:
+    image: python:3.10-alpine
+    volumes:
+      - ./ejercicios:/ejercicios
+    working_dir: /ejercicios
