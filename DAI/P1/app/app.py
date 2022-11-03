@@ -22,17 +22,17 @@ def hello_world():
     return 'Hola Mundo :)'
 
 # Ejercicio sucesión de Fibonacci
-@app.route('/fibonacci/<int:valor>')
+@app.route('/fibonacci/<int:valor>/')
 def routeFibonacci(valor):
     return str(Fibonacci(valor))
 
 # Ejercicio criba de Eratóstenes
-@app.route('/criba/<int:valor>')
+@app.route('/criba/<int:valor>/')
 def routeCriba(valor):
     return criba.cribaEratostenes(valor)
 
 # Ejercicio cadena de corchetes
-@app.route('/cadena/<string:cadena>')
+@app.route('/cadena/<string:cadena>/')
 def routeCadena(cadena):
     if ca.cadenaCorrecta(cadena):
         return 'La cadena es correcta'
@@ -40,7 +40,7 @@ def routeCadena(cadena):
         return 'La cadena es incorrecta'
 
 # Ejercicio expresiones regulares
-@app.route('/eregulares/<string:cadena>')
+@app.route('/eregulares/<string:cadena>/')
 def routeEregulares(cadena):
     if er.identificarPalabra(cadena):
         return 'Es una palabra + espacio + mayúscula'
@@ -54,7 +54,7 @@ def routeEregulares(cadena):
                 return 'No es algo que pueda identificar'
 
 # Ejercicio de mostrar una imagen
-@app.route('/imagen')
+@app.route('/imagen/')
 def verImagen():
     return render_template("imagen.html")
 
@@ -64,7 +64,7 @@ def page_not_found(e):
     return render_template("404.html"), 404
 
 # Ejercicio de imágenes dinámicas
-@app.route('/svg')
+@app.route('/svg/')
 def routesvg():
     randomsvg = randomSVG()
     return '<h1>Random SVG<br/></h1>'+''.join(randomsvg)
