@@ -6,3 +6,8 @@ def index(request):
 
 def detalles(request):
     return render(request, "detalles.html", {})
+
+'''
+def busqueda(request):
+    return render(request, , {})
+'''
