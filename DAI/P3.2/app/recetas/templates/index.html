@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block contenido %}
+    todas_recetas<br>
+    {% for busqueda in busquedas %}
+        {{busqueda}}
+    {% endfor %}
+{% endblock %}

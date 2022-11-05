@@ -1,13 +1,14 @@
 import re
 from django.shortcuts import render, HttpResponse
+from recetas.models import Receta
 
 def index(request):
-    return render(request, "inicio.html", {})
+    if request.GET.get('searchInput') != None:
+        busquedas = Receta.objects.filter(nombre = request.GET.get('searchInput'))
+        return render(request, 'lista_recetas.html', {'busquedas': busquedas})
+    else:
+        busquedas = Receta.objects.all()
+        return render(request, "index.html", {'busquedas': busquedas})
 
 def detalles(request):
     return render(request, "detalles.html", {})
-
-'''
-def busqueda(request):
-    return render(request, , {})
-'''
