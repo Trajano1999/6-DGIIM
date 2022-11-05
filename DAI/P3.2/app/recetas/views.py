@@ -1,5 +1,4 @@
-import re
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from recetas.models import Receta
 
 def index(request):
