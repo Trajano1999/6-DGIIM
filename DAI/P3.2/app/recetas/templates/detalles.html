@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
 {% block contenido %}
-    detalles
+    <div>
+        <br>{{receta.nombre}}<br>
+        <br><img src="/{{receta.foto}}" width="700" height="500"><br>
+        <br>{{receta.id}}
+    </div> 
 {% endblock %}

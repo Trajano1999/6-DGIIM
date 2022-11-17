@@ -9,5 +9,6 @@ def index(request):
         busquedas = Receta.objects.all()
         return render(request, "index.html", {'busquedas': busquedas})
 
-def detalles(request):
-    return render(request, "detalles.html", {})
+def detalles(request, id):
+    receta = Receta.objects.get(pk = id)
+    return render(request, "detalles.html", {'receta': receta})

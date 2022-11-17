@@ -3,7 +3,7 @@
     {% for busqueda in busquedas %}
         <br>
         <div>
-            <h4><a href="?searchInput={{busqueda.nombre}}/">{{busqueda.nombre}}</a></h4>
+            <h4><a href="{% url 'detalles' busqueda.id %}">{{busqueda.nombre}}</a></h4>
         </div> 
     {% endfor %}
 {% endblock %}
