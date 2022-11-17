@@ -4,6 +4,7 @@
         <br>
         <div>
             <h4><a href="{% url 'detalles' busqueda.id %}">{{busqueda.nombre}}</a></h4>
-        </div> 
+            <br><img src="/{{busqueda.foto}}" width="450" height="300"><br>
+        </div>
     {% endfor %}
 {% endblock %}
