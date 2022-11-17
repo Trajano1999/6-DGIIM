@@ -1,0 +1,19 @@
+.navbar-brand{
+    font-weight: 300;
+    color: rgb(242, 250, 253);
+}
+
+.navbar-brand:hover{
+    font-weight: 450;
+    color: rgb(242, 250, 253);
+}
+
+.navbar.navbar-expand-lg.bg-light{
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+body{
+    background-color: rgb(242, 250, 253) !important;
+}

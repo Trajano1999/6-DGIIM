@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% block contenido %}
-    <div>
-        <br>
-        <h2>{{receta.nombre}}</h2>
-        <br>{{receta.preparación|linebreaksbr}}
-        <br><br><img src="/{{receta.foto}}" width="550" height="400"><br>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/detalles.css' %}">
+
+
+    <div class="div-detalles-comida">
+        <br><p class="p-detalles-titulo">{{receta.nombre}}</p>
+        <br><p class="p-detalles-receta">{{receta.preparación|linebreaksbr}}</p>
+        <br><img src="/{{receta.foto}}" class="detalles-imagen"><br>
     </div>
 {% endblock %}
