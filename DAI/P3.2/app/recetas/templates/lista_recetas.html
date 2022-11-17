@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
 {% block contenido %}
-    lista_recetas
+    {% for busqueda in busquedas %}
+    <br>
+    <div>
+        <h4><a href="?searchInput={{busqueda.nombre}}/">{{busqueda.nombre}}</a></h4>
+    </div>
+{% endfor %}
 {% endblock %}
