@@ -12,3 +12,6 @@ def index(request):
 def detalles(request, id):
     receta = Receta.objects.get(pk = id)
     return render(request, "detalles.html", {'receta': receta})
+
+def nueva_receta(request):
+    return render(request, 'nueva_receta.html')
