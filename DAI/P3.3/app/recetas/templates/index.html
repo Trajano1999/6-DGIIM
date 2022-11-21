@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block contenido %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    {% for busqueda in busquedas %}
+        <div class="div-index-comida">
+            <br><a class="a-index-comida" href="{% url 'detalles' busqueda.id %}">{{busqueda.nombre}}</a>
+            <br><br><img src="/{{busqueda.foto}}" class="index-imagen"><br>
+        </div>
+    {% endfor %}
+{% endblock %}
