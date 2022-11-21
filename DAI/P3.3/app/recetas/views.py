@@ -1,17 +1,18 @@
 from django.shortcuts import render
-from recetas.models import Receta
+from .models import Receta
+from .forms import RecetaForm
 
 def index(request):
     if request.GET.get('searchInput') != None:
-        busquedas = Receta.objects.filter(nombre = request.GET.get('searchInput'))
-        return render(request, 'index.html', {'busquedas': busquedas})
+        busquedas = Receta.objects.filter(nombre = request.GET.get('searchInput')) 
     else:
         busquedas = Receta.objects.all()
-        return render(request, "index.html", {'busquedas': busquedas})
+    return render(request, "index.html", {'busquedas': busquedas})
 
 def detalles(request, id):
     receta = Receta.objects.get(pk = id)
     return render(request, "detalles.html", {'receta': receta})
 
 def nueva_receta(request):
-    return render(request, 'nueva_receta.html')
+    form = RecetaForm()
+    return render(request, 'nueva_receta.html', {'form': form})
