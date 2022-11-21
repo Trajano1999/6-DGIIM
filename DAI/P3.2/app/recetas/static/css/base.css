@@ -1,4 +1,4 @@
-/* BARRA NAVEGACIÓN*/
+/* BARRA NAVEGACIÓN */
     
     /* Inicio barra navegación */
     .navbar-brand{
@@ -10,22 +10,32 @@
         color: rgb(242, 250, 253);
     }
 
+    /* Logo Modo Nocturno */
+    .switch{
+        border-radius: 100%;
+        background-color: rgb(242, 250, 253);
+    }
+    body.dark .switch{
+        background-color: #191e20;
+        color: rgb(242, 250, 253);
+    }
+
     /* Fondo barra navegación */
     .navbar.navbar-expand-lg.bg-light{
         background: #0F2027;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
-    .navbar.navbar-expand-lg.bg-light.dark{
+    body.dark .navbar.navbar-expand-lg.bg-light{
         background: #848a9d !important;
     }
 
-    /* Búsqueda barra navegacion*/
+    /* Búsqueda barra navegacion */
     .btn.btn-outline-success{
         color: orange;
         border-color: orange;
     }
-    .btn.btn-outline-success.dark{
+    body.dark .btn.btn-outline-success{
         color: white;
         border-color: white;
     }

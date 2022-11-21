@@ -5,9 +5,12 @@
 .a-index-comida{
     text-decoration: none;
     text-align: center;
-    color: #6482a6;
+    color: #5f83ae;
     font-weight: 450;
     font-size: 28px;
+}
+body.dark .a-index-comida{
+    color: #a3b4c8;
 }
 
 .index-imagen{

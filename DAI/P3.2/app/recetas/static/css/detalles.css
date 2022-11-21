@@ -5,8 +5,18 @@
 .p-detalles-titulo{
     text-align: center;
     color: #2d444e;
-    font-weight: 450;
-    font-size: 28px;
+    font-weight: 500;
+    font-size: 30px;
+}
+body.dark .p-detalles-titulo{
+    color: #a3b4c8;
+}
+
+.p-detalles-receta{
+    font-size: 16px;
+}
+body.dark .p-detalles-receta{
+    color: #cbcbcb;
 }
 
 .detalles-imagen{
