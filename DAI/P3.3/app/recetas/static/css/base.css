@@ -54,13 +54,52 @@ body.dark{
 .fas.fa-arrow-left{
     padding: 6px;
     position: absolute;
-    margin-top: 4%;
-    left: 18%;
+    margin-top: 2.5%;
+    left: 13%;
     
     text-decoration: none;
     border: solid;
     border-radius: 100%;
     border-width: 3px;
+    font-size: 30px;
+    color: #2C5364;
+}
+
+/*ICONO DE CREAR*/
+.fas.fa-plus{
+    padding: 6px;
+    position: absolute;
+    margin-top: 2.5%;
+    left: 13%;
+    
+    text-decoration: none;
+    border: solid;
+    border-radius: 100%;
+    border-width: 3px;
+    font-size: 30px;
+    color: #2C5364;
+}
+
+/*ICONO DE EDITAR*/
+.far.fa-edit{
+    padding: 6px;
+    position: absolute;
+    margin-top: 2.7%;
+    right: 16%;
+    
+    text-decoration: none;
+    font-size: 30px;
+    color: #2C5364;
+}
+
+/*ICONO DE BORRAR*/
+.fas.fa-trash{
+    padding: 6px;
+    position: absolute;
+    margin-top: 2.7%;
+    right: 12%;
+    
+    text-decoration: none;
     font-size: 30px;
     color: #2C5364;
 }

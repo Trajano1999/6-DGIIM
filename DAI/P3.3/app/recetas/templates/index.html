@@ -3,11 +3,9 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 
-    <br>
-    <a href="{% url 'nueva_receta' %}" class="top-menu">
-		<button class="btn btn-sm btn-outline-secondary" type="button" onclick="">Añadir Receta</button>
-	</a>
+    <a href="{% url 'nueva_receta' %}" class="fas fa-plus"></a>
     
+    <br><br>
     {% for busqueda in busquedas %}
         <div class="div-index-comida">
             <a class="a-index-comida" href="{% url 'detalles' busqueda.id %}">{{busqueda.nombre}}</a>
