@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Receta
 from .forms import RecetaForm
 
@@ -14,5 +14,13 @@ def detalles(request, id):
     return render(request, "detalles.html", {'receta': receta})
 
 def nueva_receta(request):
-    form = RecetaForm()
+    if request.method == "POST":
+        form = RecetaForm(request.POST, request.FILES)
+        if form.is_valid():
+            receta = form.instance
+            receta.save()
+            return redirect('detalles', id=receta.id)   # jjj podemos poner redirect('index') si queremos que nos lleve a la pagina principal
+    else:
+        form = RecetaForm()
+
     return render(request, 'nueva_receta.html', {'form': form})

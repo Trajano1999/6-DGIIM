@@ -1,0 +1,33 @@
+.div-nreceta-comida{
+    text-align: center;
+}
+
+.p-nreceta-titulo{
+    color: #2d444e;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.form-nreceta{
+    padding: 2%;
+    border: solid;
+    border-radius: 10%;
+    border-width: 1px;
+    background-color: white;
+}
+
+.div-nreceta-comida label{
+    font-weight: 550;
+    font-size: 16px;
+    margin: 0.75%;
+    display: block;
+}
+
+.div-nreceta-comida textarea{
+    width: 35%;
+    border-radius: 5%;
+}
+
+.div-nreceta-comida button{
+    margin-top: 2%;
+}

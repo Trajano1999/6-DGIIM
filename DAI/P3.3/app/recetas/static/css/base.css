@@ -49,3 +49,18 @@ body.dark{
     background-color: #191e20;
     transition: .3s ease all;
 }
+
+/*ICONO DE VOLVER*/
+.fas.fa-arrow-left{
+    padding: 6px;
+    position: absolute;
+    margin-top: 4%;
+    left: 18%;
+    
+    text-decoration: none;
+    border: solid;
+    border-radius: 100%;
+    border-width: 3px;
+    font-size: 30px;
+    color: #2C5364;
+}

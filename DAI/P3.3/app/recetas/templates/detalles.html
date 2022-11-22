@@ -3,10 +3,14 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/detalles.css' %}">
 
+    <a class="fas fa-arrow-left" href="/"></a>
     <div class="div-detalles-comida" id="div-detalles-comida">
+        <br><br><br>
+        <p class="p-detalles-titulo">{{receta.nombre}}</p>
+        <br>
+        <p class="p-detalles-receta">{{receta.preparación|linebreaksbr}}</p>
         <br><br>
-        <br><p class="p-detalles-titulo">{{receta.nombre}}</p>
-        <br><p class="p-detalles-receta">{{receta.preparación|linebreaksbr}}</p>
-        <br><br><img src="/{{receta.foto}}" class="detalles-imagen"><br>
+        <img src="/{{receta.foto}}" class="detalles-imagen">
+        <br>
     </div>
 {% endblock %}
