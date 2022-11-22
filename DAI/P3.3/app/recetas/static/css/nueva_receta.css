@@ -7,27 +7,56 @@
     font-weight: 500;
     font-size: 30px;
 }
+body.dark .p-nreceta-titulo{
+    color: #a3b4c8;
+}
 
 .form-nreceta{
     padding: 2%;
-    border: solid;
-    border-radius: 10%;
-    border-width: 1px;
+    border: groove;
+    border-color: #f5f5f7;
+    border-radius: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
     background-color: white;
+    box-shadow: 3px 3px teal;
+}
+body.dark .form-nreceta{
+    color: #cbcbcb;
+    background-color: #68696cc2;
+    border: none;
+    box-shadow: 5px 5px #16313b;
 }
 
 .div-nreceta-comida label{
     font-weight: 550;
     font-size: 16px;
-    margin: 0.75%;
+    margin: 2%;
     display: block;
 }
 
+body.dark input{
+    border: solid;
+    border-color: black;
+    border-width: 1.5px;
+}
+
 .div-nreceta-comida textarea{
-    width: 35%;
+    width: 55%;
     border-radius: 5%;
+}
+body.dark .div-nreceta-comida textarea{
+    border: solid;
+    border-color: black;
+    border-width: 1.5px;
 }
 
 .div-nreceta-comida button{
     margin-top: 2%;
+}
+body.dark .div-nreceta-comida button{
+    background-color: #848a9d;
+    font-weight: 600;
+    color: #191e20;
+    border: none;
 }

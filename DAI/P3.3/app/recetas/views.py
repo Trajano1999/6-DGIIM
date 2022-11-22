@@ -5,8 +5,7 @@ from .forms import RecetaForm
 # jjj Cosas por hacer:
 #   1. Añadir ingredientes a la búsqueda, no solo recetas.
 #   2. Almacenar las fotos en forms.py.
-#   3. Estilizar nuevas recetas.
-#   4. Editar y eliminar recetas.
+#   3. Editar y eliminar recetas.
 #   4. Mensajes de creación y edición.
 
 def index(request):

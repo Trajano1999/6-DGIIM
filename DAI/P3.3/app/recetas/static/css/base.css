@@ -42,7 +42,7 @@
 
 /* BODY */
 body{
-    background-color: rgb(242, 250, 253);
+    background-color: #f5f5f7;
     transition: .3s ease all;
 }
 body.dark{
@@ -64,6 +64,10 @@ body.dark{
     font-size: 30px;
     color: #2C5364;
 }
+body.dark .fas.fa-arrow-left{
+    color: #cbcbcb;
+}
+
 
 /*ICONO DE CREAR*/
 .fas.fa-plus{
@@ -79,6 +83,10 @@ body.dark{
     font-size: 30px;
     color: #2C5364;
 }
+body.dark .fas.fa-plus{
+    color: #cbcbcb;
+}
+
 
 /*ICONO DE EDITAR*/
 .far.fa-edit{
@@ -91,6 +99,9 @@ body.dark{
     font-size: 30px;
     color: #2C5364;
 }
+body.dark .far.fa-edit{
+    color: #cbcbcb;
+}
 
 /*ICONO DE BORRAR*/
 .fas.fa-trash{
@@ -102,4 +113,7 @@ body.dark{
     text-decoration: none;
     font-size: 30px;
     color: #2C5364;
+}
+body.dark .fas.fa-trash{
+    color: #cbcbcb;
 }
