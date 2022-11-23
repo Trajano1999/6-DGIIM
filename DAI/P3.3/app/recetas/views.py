@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Receta
 from .forms import RecetaForm
+from django.contrib import messages
 
 # jjj Cosas por hacer:
 #   1. Añadir ingredientes a la búsqueda, no solo recetas.
@@ -25,6 +26,7 @@ def nueva_receta(request):
         if form.is_valid():
             receta = form.instance
             receta.save()
+            messages.info(request, 'Nueva receta creada!')
             return redirect('index')   # jjj podemos poner redirect('detalles', id=receta.id) si queremos que nos lleve al detalle de la nueva receta.
     else:
         form = RecetaForm()
@@ -37,6 +39,7 @@ def editar_receta(request, id):
         if form.is_valid():
             receta = form.instance
             receta.save()
+            messages.info(request, 'Receta editada!')
             return redirect('detalles', id=receta.id)
     else:
         form = RecetaForm(instance=receta)
