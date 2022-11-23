@@ -4,9 +4,10 @@
     <link rel="stylesheet" href="{% static 'css/nueva_receta.css' %}">
 
     <a class="fas fa-arrow-left" href="/"></a>
+    
     <div class="div-nreceta-comida" id="div-nreceta-comida">
         <br><br>
-        <p class="p-nreceta-titulo">Nueva Receta</p>
+        <p class="p-nreceta-titulo">Receta</p>
         <br>
         <form method="POST" class="form-nreceta">{% csrf_token %}
             {{form.as_p}}

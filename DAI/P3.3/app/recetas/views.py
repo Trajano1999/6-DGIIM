@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Receta
 from .forms import RecetaForm
 
 # jjj Cosas por hacer:
 #   1. Añadir ingredientes a la búsqueda, no solo recetas.
 #   2. Almacenar las fotos en forms.py.
-#   3. Editar y eliminar recetas.
+#   3. Eliminar recetas.
 #   4. Mensajes de creación y edición.
 
 def index(request):
@@ -28,8 +28,16 @@ def nueva_receta(request):
             return redirect('index')   # jjj podemos poner redirect('detalles', id=receta.id) si queremos que nos lleve al detalle de la nueva receta.
     else:
         form = RecetaForm()
-
     return render(request, 'nueva_receta.html', {'form': form})
 
 def editar_receta(request, id):
-    return render(request, 'editar_receta.html')
+    receta = get_object_or_404(Receta, id=id)
+    if request.method == "POST":
+        form = RecetaForm(request.POST, request.FILES, instance=receta)
+        if form.is_valid():
+            receta = form.instance
+            receta.save()
+            return redirect('detalles', id=receta.id)
+    else:
+        form = RecetaForm(instance=receta)
+    return render(request, 'nueva_receta.html', {'form': form})
