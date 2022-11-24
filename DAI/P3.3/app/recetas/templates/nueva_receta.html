@@ -9,7 +9,7 @@
         <br><br>
         <p class="p-nreceta-titulo">Receta</p>
         <br>
-        <form method="POST" class="form-nreceta">{% csrf_token %}
+        <form method="POST" class="form-nreceta" enctype="multipart/form-data">{% csrf_token %}
             {{form.as_p}}
             <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
         </form>

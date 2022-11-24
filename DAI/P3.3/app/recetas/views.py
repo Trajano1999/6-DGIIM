@@ -4,10 +4,8 @@ from .forms import RecetaForm
 from django.contrib import messages
 
 # jjj Cosas por hacer:
-#   1. Añadir ingredientes a la búsqueda, no solo recetas.
-#   2. Almacenar las fotos en forms.py.
-#   3. Eliminar recetas.
-#   4. Mensajes de creación y edición.
+#   1. Mensajes de creación y edición.
+#   2. Añadir ingredientes a la búsqueda, no solo recetas.
 
 def index(request):
     if request.GET.get('searchInput') != None:
@@ -17,7 +15,7 @@ def index(request):
     return render(request, "index.html", {'busquedas': busquedas})
 
 def detalles(request, id):
-    receta = Receta.objects.get(pk = id)
+    receta = Receta.objects.get(id = id)
     return render(request, "detalles.html", {'receta': receta})
 
 def nueva_receta(request):
@@ -44,3 +42,9 @@ def editar_receta(request, id):
     else:
         form = RecetaForm(instance=receta)
     return render(request, 'nueva_receta.html', {'form': form})
+
+def eliminar(request, id):
+    receta = Receta.objects.get(id = id)
+    receta.delete()
+    messages.info(request, 'Receta eliminada!')
+    return redirect('index')
