@@ -4,8 +4,10 @@ from .forms import RecetaForm
 from django.contrib import messages
 
 # jjj Cosas por hacer:
-#   1. Mensajes de creación y edición.
-#   2. Añadir ingredientes a la búsqueda, no solo recetas.
+#   1. Estilizar mensajes de creación y edición.
+#   2. Ventana modal al borrar.
+#   3. Validación de campos.
+#   4. Añadir ingredientes a la búsqueda, no solo recetas.
 
 def index(request):
     if request.GET.get('searchInput') != None:
@@ -24,7 +26,7 @@ def nueva_receta(request):
         if form.is_valid():
             receta = form.instance
             receta.save()
-            messages.info(request, 'Nueva receta creada!')
+            messages.add_message(request, messages.SUCCESS, 'Nueva receta creada!')
             return redirect('index')   # jjj podemos poner redirect('detalles', id=receta.id) si queremos que nos lleve al detalle de la nueva receta.
     else:
         form = RecetaForm()
@@ -37,7 +39,7 @@ def editar_receta(request, id):
         if form.is_valid():
             receta = form.instance
             receta.save()
-            messages.info(request, 'Receta editada!')
+            messages.add_message(request, messages.SUCCESS, 'Receta editada!')
             return redirect('detalles', id=receta.id)
     else:
         form = RecetaForm(instance=receta)
@@ -46,5 +48,5 @@ def editar_receta(request, id):
 def eliminar(request, id):
     receta = Receta.objects.get(id = id)
     receta.delete()
-    messages.info(request, 'Receta eliminada!')
+    messages.add_message(request, messages.SUCCESS, 'Receta eliminada!')
     return redirect('index')
