@@ -50,3 +50,6 @@ def eliminar(request, id):
     receta.delete()
     messages.add_message(request, messages.SUCCESS, 'Receta eliminada!')
     return redirect('index')
+
+def login(request):
+    return render(request, 'login.html', {})
