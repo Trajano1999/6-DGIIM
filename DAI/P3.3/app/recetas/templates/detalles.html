@@ -5,8 +5,27 @@
 
     <a class="fas fa-arrow-left" href="/"></a>
     <a class="far fa-edit" href="{% url 'editar_receta' receta.id %}"></a>
-    <a class="fas fa-trash" href="{% url 'eliminar_receta' receta.id %}"></a>
+    <a type="button" class="fas fa-trash" data-bs-toggle="modal" data-bs-target="#exampleModal"></a>
 
+    <!-- Ventana Modal de eliminación -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Receta</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estas seguro/a de que desea eliminar esta receta? Esta acción no se puede deshacer.
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <a type="button" class="btn btn-primary" href="{% url 'eliminar_receta' receta.id %}">Eliminar</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    
     <div class="div-detalles-comida" id="div-detalles-comida">
         <br><br><br>
         <p class="p-detalles-titulo">{{receta.nombre}}</p>
