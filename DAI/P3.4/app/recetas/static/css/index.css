@@ -1,0 +1,21 @@
+.div-index-comida{
+    text-align: center;
+}
+
+.a-index-comida{
+    text-decoration: none;
+    text-align: center;
+    color: #5f83ae;
+    font-weight: 450;
+    font-size: 28px;
+}
+body.dark .a-index-comida{
+    color: #a3b4c8;
+}
+
+.index-imagen{
+    width: 400px;
+    height: 250px;
+    border-radius: 5%;
+}
+

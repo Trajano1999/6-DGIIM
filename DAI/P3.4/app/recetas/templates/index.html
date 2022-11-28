@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block contenido %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    <a href="{% url 'nueva_receta' %}" class="fas fa-plus"></a>
+    
+    <br><br>
+    {% for busqueda in busquedas %}
+        <div class="div-index-comida">
+            <a class="a-index-comida" href="{% url 'detalles' busqueda.id %}">{{busqueda.nombre}}</a>
+            <br><br>
+            <img src="/{{busqueda.foto}}" class="index-imagen">
+            <br><br>
+        </div>
+    {% endfor %}
+{% endblock %}

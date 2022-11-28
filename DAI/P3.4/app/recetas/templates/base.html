@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap Css FontAwesome -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+	<script src="https://kit.fontawesome.com/c43ade7753.js" crossorigin="anonymous"></script>
+
+	<!-- Title -->
+	<title>Práctica 3</title>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg bg-light" id="barra">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/">Práctica 3</a>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">	
+					<button class="switch" id="switch">
+						<span><i class="fas fa-moon"></i></span>
+					</button>
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">  
+					</ul>
+					<form class="d-flex" role="search" method="GET" action="/">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchInput">
+						<button class="btn btn-outline-success" type="submit" id="boton-busqueda">Search</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<!-- Mensajes -->
+	{% if messages %}
+		<ul class="messages"> 
+			{% for message in messages %} 
+				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> 
+			{% endfor %} 
+		</ul>
+	{% endif %}
+
+	<div class="container">
+		{% block contenido %}
+		{% endblock %}
+	</div>
+
+	<!-- Bootstrap Js -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
