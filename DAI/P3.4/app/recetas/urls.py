@@ -7,5 +7,4 @@ urlpatterns = [
     path('recetas/new/', views.nueva_receta, name='nueva_receta'),
     path('recetas/edit/<int:id>/', views.editar_receta, name='editar_receta'),
     path('recetas/remove/<int:id>/', views.eliminar, name='eliminar_receta'),
-    path('accounts/', views.login, name='login'),
 ]

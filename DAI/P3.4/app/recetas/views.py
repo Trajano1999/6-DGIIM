@@ -4,10 +4,10 @@ from .forms import RecetaForm
 from django.contrib import messages
 
 # jjj Cosas por hacer:
-#   1. Estilizar mensajes de creación y edición.
-#   2. Ventana modal al borrar.
-#   3. Validación de campos.
-#   4. Añadir ingredientes a la búsqueda, no solo recetas.
+#   1. Añadir ingredientes a la búsqueda, no solo recetas.
+#   2. Estilizar mensajes.
+#   3. Estilizar htmls.
+#   4. Modo nocturno de los nuevos htmls.
 
 def index(request):
     if request.GET.get('searchInput') != None:
@@ -50,6 +50,3 @@ def eliminar(request, id):
     receta.delete()
     messages.add_message(request, messages.SUCCESS, 'Receta eliminada!')
     return redirect('index')
-
-def login(request):
-    return render(request, 'login.html', {})

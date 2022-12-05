@@ -20,10 +20,10 @@
 		<nav class="navbar navbar-expand-lg bg-light" id="barra">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/">Práctica 3</a>
+				<button class="switch" id="switch">
+					<span><i class="fas fa-moon"></i></span>
+				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">	
-					<button class="switch" id="switch">
-						<span><i class="fas fa-moon"></i></span>
-					</button>
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">  
 					</ul>
 					<form class="d-flex" role="search" method="GET" action="/">
@@ -31,6 +31,10 @@
 						<button class="btn btn-outline-success" type="submit" id="boton-busqueda">Search</button>
 					</form>
 				</div>
+
+				<a class="fas fa-user-circle" href="{% url 'login' %}?next={{ request.path }}"></a>
+				<a class="fas fa-sign-out-alt" href="{% url 'logout' %}?next={{ request.path }}"></a>
+
 			</div>
 		</nav>
 	</header>

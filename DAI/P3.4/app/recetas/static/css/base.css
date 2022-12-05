@@ -3,21 +3,24 @@
     /* Inicio barra navegación */
     .navbar-brand{
         font-weight: 300;
-        color: rgb(242, 250, 253);
+        color: #f5f5f7;
+        padding: 0.5%;
     }
     .navbar-brand:hover{
         font-weight: 450;
-        color: rgb(242, 250, 253);
+        color: #f5f5f7;
     }
 
     /* Logo Modo Nocturno */
     .switch{
+        font-size: 18px;
         border-radius: 100%;
-        background-color: rgb(242, 250, 253);
+        background-color: #f5f5f7;
+        margin-left: 0.5%;
     }
     body.dark .switch{
         background-color: #191e20;
-        color: rgb(242, 250, 253);
+        color: #f5f5f7;
     }
 
     /* Fondo barra navegación */
@@ -38,6 +41,31 @@
     body.dark .btn.btn-outline-success{
         color: white;
         border-color: white;
+    }
+
+    /* Logo Login */
+    .fas.fa-user-circle{
+        text-decoration: none;
+        font-size: 30px;
+        color: #f5f5f7;
+        background-color: #0F2027;
+        margin-left: 4%;
+        margin-right: 1.5%;
+    }
+    body.dark .fas.fa-user-circle{
+        background-color: #848a9d;
+    }
+
+    /* Logo Logout */
+    .fas.fa-sign-out-alt{
+        text-decoration: none;
+        font-size: 30px;
+        color: #f5f5f7;
+        background-color: #0F2027;
+        margin-right: 2%;
+    }
+    body.dark .fas.fa-sign-out-alt{
+        background-color: #848a9d;
     }
 
 /* BODY */
