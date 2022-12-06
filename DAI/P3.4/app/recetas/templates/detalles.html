@@ -3,9 +3,16 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/detalles.css' %}">
 
+    <!-- Botones -->
     <a class="fas fa-arrow-left" href="/"></a>
-    <a class="far fa-edit" href="{% url 'editar_receta' receta.id %}"></a>
-    <a type="button" class="fas fa-trash" data-bs-toggle="modal" data-bs-target="#exampleModal"></a>
+    
+    {% if user.is_authenticated %}
+        <a class="far fa-edit" href="{% url 'editar_receta' receta.id %}"></a>
+    {% endif %}
+    
+    {% if user.is_superuser %}
+        <a type="button" class="fas fa-trash" data-bs-toggle="modal" data-bs-target="#exampleModal"></a>
+    {% endif %}
 
     <!-- Ventana Modal de eliminación -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -26,6 +33,7 @@
         </div>
     </div>
     
+    <!-- Contenido -->
     <div class="div-detalles-comida" id="div-detalles-comida">
         <br><br><br>
         <p class="p-detalles-titulo">{{receta.nombre}}</p>

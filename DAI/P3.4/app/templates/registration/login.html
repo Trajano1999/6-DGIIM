@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block contenido %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'registration/css/login.css' %}">
+
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}

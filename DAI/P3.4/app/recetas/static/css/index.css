@@ -1,5 +1,6 @@
 .div-index-comida{
     text-align: center;
+    margin: 1%;
 }
 
 .a-index-comida{
@@ -17,5 +18,6 @@ body.dark .a-index-comida{
     width: 400px;
     height: 250px;
     border-radius: 5%;
+    margin: 2%;
 }
 
