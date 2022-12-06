@@ -3,6 +3,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'registration/css/login.css' %}">
 
+    <!-- Mensajes -->
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
@@ -11,7 +12,7 @@
         {% if user.is_authenticated %}
             <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
         {% else %}
-            <p>Please login to see this page.</p>
+            <p class="mensaje_login">Please login to see this page.</p>
         {% endif %}
     {% endif %}
 
@@ -30,7 +31,7 @@
             <input type="hidden" name="next" value="{{ next }}">
             
             {# Assumes you setup the password_reset view in your URLconf #}
-            <p><a href="{% url 'password_reset' %}">Olvidó su contraseña?</a></p>
+            <p><a class="olvido_contraseña_login" href="{% url 'password_reset' %}">Olvidó su contraseña?</a></p>
         </form>
     </div>
 {% endblock %}

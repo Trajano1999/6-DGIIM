@@ -1,3 +1,7 @@
+body.dark .mensaje_login{
+    color: #cbcbcb;
+}
+
 .todo_login{
     text-align: center;
 }
@@ -7,6 +11,9 @@
     font-weight: 500;
     font-size: 30px;
     margin-top: 3%;
+}
+body.dark .titulo_login{
+    color: #a3b4c8;
 }
 
 .form_login{
@@ -20,6 +27,12 @@
     background-color: white;
     box-shadow: 3px 3px teal;
 }
+body.dark .form_login{
+    color: #cbcbcb;
+    background-color: #68696cc2;
+    border: none;
+    box-shadow: 5px 5px #16313b;
+}
 
 .form_login label{
     font-weight: 550;
@@ -27,7 +40,23 @@
     padding: 3%;
 }
 
+boyd.dark input{
+    border: solid;
+    border-color: black;
+    border-width: 1.5px;
+}
+
 .btn.btn-primary.btn-lg{
     font-size: 18px;
     margin: 5%;
+}
+body.dark .btn.btn-primary.btn-lg{
+    font-weight: 600;
+    background-color: #85a5ff;
+    color: #191e20;
+    border: none;
+}
+
+body.dark .olvido_contraseña_login{
+    color: #85a5ff;
 }
