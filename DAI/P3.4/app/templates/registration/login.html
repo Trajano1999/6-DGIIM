@@ -25,11 +25,12 @@
             <br>
             {{ form.password.label_tag }}
             {{ form.password }}
-            <input type="submit" value="login">
+            <br>
+            <input class="btn btn-primary btn-lg" type="submit" value="Acceder">
             <input type="hidden" name="next" value="{{ next }}">
             
             {# Assumes you setup the password_reset view in your URLconf #}
-            <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+            <p><a href="{% url 'password_reset' %}">Olvidó su contraseña?</a></p>
         </form>
     </div>
 {% endblock %}
