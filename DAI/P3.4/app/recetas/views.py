@@ -3,12 +3,6 @@ from .models import Receta
 from .forms import RecetaForm
 from django.contrib import messages
 
-# jjj Cosas por hacer:
-#   1. Añadir ingredientes a la búsqueda, no solo recetas.
-#   2. Estilizar mensajes.
-#   3. Estilizar htmls.
-#   4. Modo nocturno de los nuevos htmls.
-
 def index(request):
     if request.GET.get('searchInput') != None:
         busquedas = Receta.objects.filter(nombre = request.GET.get('searchInput')) 
@@ -27,7 +21,7 @@ def nueva_receta(request):
             receta = form.instance
             receta.save()
             messages.add_message(request, messages.SUCCESS, 'Nueva receta creada!')
-            return redirect('index')   # jjj podemos poner redirect('detalles', id=receta.id) si queremos que nos lleve al detalle de la nueva receta.
+            return redirect('index')   # podemos poner redirect('detalles', id=receta.id) si queremos que nos lleve al detalle de la nueva receta.
     else:
         form = RecetaForm()
     return render(request, 'nueva_receta.html', {'form': form})
