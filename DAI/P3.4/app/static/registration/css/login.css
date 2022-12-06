@@ -1,3 +1,22 @@
-body{
-    background-color: blue;
+.todo_login{
+    text-align: center;
+}
+
+.titulo_login{
+    color: #2d444e;
+    font-weight: 500;
+    font-size: 30px;
+    margin-top: 3%;
+}
+
+.form_login{
+    padding: 7%;
+    border: groove;
+    border-color: #f5f5f7;
+    border-radius: 20%;
+    margin-top: 3.5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: white;
+    box-shadow: 3px 3px teal;
 }

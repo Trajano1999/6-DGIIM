@@ -6,11 +6,10 @@
     <!-- Botones -->
     <a class="fas fa-arrow-left" href="/"></a>
     
-    <!-- Formulario -->
+    <!-- Contenido -->
     <div class="div-nreceta-comida" id="div-nreceta-comida">
         <br><br>
         <p class="p-nreceta-titulo">Receta</p>
-        <br>
         <form method="POST" class="form-nreceta" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.as_p}}

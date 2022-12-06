@@ -16,6 +16,7 @@ body.dark .p-nreceta-titulo{
     border: groove;
     border-color: #f5f5f7;
     border-radius: 5%;
+    margin-top: 3.5%;
     margin-left: 25%;
     margin-right: 25%;
     background-color: white;
@@ -42,7 +43,7 @@ body.dark input{
 }
 
 .div-nreceta-comida textarea{
-    width: 55%;
+    width: 85%;
     border-radius: 5%;
 }
 body.dark .div-nreceta-comida textarea{
