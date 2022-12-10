@@ -45,15 +45,17 @@
 	</header>
 
 	<!-- Mensajes -->
-	<div class="clase_mensajes">
-		{% if messages %}
+	
+	{% if messages %}
+		<div class="clase_mensajes">
 			<ul class="messages"> 
 				{% for message in messages %} 
 					<p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p> 
 				{% endfor %} 
 			</ul>
-		{% endif %}
-	</div>
+		</div>
+	{% endif %}
+	
 
 	<!-- Contenido -->
 	<div class="container">

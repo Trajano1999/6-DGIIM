@@ -95,8 +95,8 @@ body.dark{
 /* MENSAJES */
 .clase_mensajes{
     text-align: center;
-    background-color: aquamarine;
     padding: 0.1%;
+    background-color: aquamarine;
     color: black;
     font-weight: 480;
 }
@@ -104,8 +104,8 @@ body.dark{
     margin-top:0.7%;
 }
 body.dark .clase_mensajes{
+    color: #191e20;
     background-color: #88e8cd;
-    color: #a3b4c8;
 }
 
 /*ICONO DE VOLVER*/
