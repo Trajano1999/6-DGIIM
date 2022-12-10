@@ -92,6 +92,22 @@ body.dark{
     transition: .3s ease all;
 }
 
+/* MENSAJES */
+.clase_mensajes{
+    text-align: center;
+    background-color: aquamarine;
+    padding: 0.1%;
+    color: black;
+    font-weight: 480;
+}
+.clase_mensajes p{
+    margin-top:0.7%;
+}
+body.dark .clase_mensajes{
+    background-color: #88e8cd;
+    color: #a3b4c8;
+}
+
 /*ICONO DE VOLVER*/
 .fas.fa-arrow-left{
     padding: 6px;
@@ -109,7 +125,6 @@ body.dark{
 body.dark .fas.fa-arrow-left{
     color: #cbcbcb;
 }
-
 
 /*ICONO DE CREAR*/
 .fas.fa-plus{
