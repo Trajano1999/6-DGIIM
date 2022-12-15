@@ -37,10 +37,17 @@
     <div class="div-detalles-comida" id="div-detalles-comida">
         <br><br><br>
         <p class="p-detalles-titulo">{{receta.nombre}}</p>
-        <br>
         <p class="p-detalles-receta">{{receta.preparación|linebreaksbr}}</p>
-        <br><br>
-        <img src="/{{receta.foto}}" class="detalles-imagen">
+        
+        {% if ingredientes %}
+            <br>
+            <p class="p-detalles-titulo">Ingredientes</p>
+            {% for ingrediente in ingredientes %}    
+                {{ingrediente.nombre}} : {{ingrediente.cantidad}} {{ingrediente.unidades}}
+                <br>
+            {% endfor %}
+        {% endif %}
         <br>
+        <img src="/{{receta.foto}}" class="detalles-imagen">
     </div>
 {% endblock %}
