@@ -22,6 +22,13 @@ body.dark .p-detalles-receta{
     color: #cbcbcb;
 }
 
+.p-ingredientes{
+    font-size: 16px;
+}
+body.dark .p-ingredientes{
+    color: #cbcbcb;
+}
+
 .detalles-imagen{
     width: 550px;
     height: 400px;

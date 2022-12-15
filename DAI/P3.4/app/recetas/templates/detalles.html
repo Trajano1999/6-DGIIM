@@ -43,8 +43,7 @@
             <br>
             <p class="p-detalles-titulo">Ingredientes</p>
             {% for ingrediente in ingredientes %}    
-                {{ingrediente.nombre}} : {{ingrediente.cantidad}} {{ingrediente.unidades}}
-                <br>
+                <p class="p-ingredientes">{{ingrediente.nombre}} : {{ingrediente.cantidad}} {{ingrediente.unidades}}</p>
             {% endfor %}
         {% endif %}
         <br>
