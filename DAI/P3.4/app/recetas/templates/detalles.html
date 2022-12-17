@@ -42,9 +42,11 @@
         {% if ingredientes %}
             <br>
             <p class="p-detalles-titulo">Ingredientes</p>
-            {% for ingrediente in ingredientes %}    
-                <p class="p-ingredientes">{{ingrediente.nombre}} : {{ingrediente.cantidad}} {{ingrediente.unidades}}</p>
-            {% endfor %}
+            <p class="p-detalles-receta">
+                {% for ingrediente in ingredientes %}    
+                    {{ingrediente.nombre}} : {{ingrediente.cantidad}} {{ingrediente.unidades}}<br>
+                {% endfor %}
+            </p>
         {% endif %}
         <br>
         <img src="/{{receta.foto}}" class="detalles-imagen">
