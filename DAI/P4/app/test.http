@@ -1,0 +1,83 @@
+# -----------------------------------------------------------------------------
+# MENSAJES HTTP P2.2
+# -----------------------------------------------------------------------------
+
+GET  http://localhost:5000/api/recipes HTTP/1.1
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:5000/api/recipes HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Bombay Zafire 500"
+}
+
+###
+
+GET  http://localhost:5000/api/recipes/5f7b4b66933b475afc75430e HTTP/1.1
+Content-Type: application/json
+
+{}
+
+###
+
+PUT  http://localhost:5000/api/recipes/5f7b4b6204799f5cf837b1e1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Negroni Sbagliato 2"
+}
+
+###
+
+DELETE http://localhost:5000/api/recipes/6363e99e6e25cc0a55e06206 HTTP/1.1
+Content-Type: application/json
+
+{}
+
+###
+
+# -----------------------------------------------------------------------------
+# MENSAJES HTTP P2.2 (FLASK_RESTFUL)
+# -----------------------------------------------------------------------------
+
+GET  http://localhost:5000/api2/recipes HTTP/1.1
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:5000/api2/recipes HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Bombay Zafire FR1"
+}
+
+###
+
+GET  http://localhost:5000/api2/recipes/5f7b4b66933b475afc75430e HTTP/1.1
+Content-Type: application/json
+
+{}
+
+###
+
+PUT  http://localhost:5000/api2/recipes/5f7b4b6204799f5cf837b1e1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Negroni Sbagliato Juanma"
+}
+
+###
+
+DELETE http://localhost:5000/api2/recipes/634c4ed0af7f11bdf85009b2 HTTP/1.1
+Content-Type: application/json
+
+{}
