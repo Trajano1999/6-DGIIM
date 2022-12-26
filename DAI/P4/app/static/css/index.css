@@ -1,0 +1,13 @@
+/* Modo Nocturno */
+.far.fa-moon{
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+
+    margin-right: 1%;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;   
+}
+body.dark .far.fa-moon{
+    color: blue;
+}
