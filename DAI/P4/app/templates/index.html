@@ -22,16 +22,33 @@
     <!-- Barra Navegación -->
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Práctica 4</a>
-            <a class="far fa-moon" id="night-mode"></a>
+            <div>
+                <a class="navbar-brand" href="/">Práctica 4</a>
+                <a class="fas fa-moon" id="night-mode"></a>
+            </div> 
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 
-    <!-- Contenido -->
-	<div class="container">
-		hola
-	</div>
-
+    <div class="contenido">
+        <!-- en el HTML-->
+        <button type="button" class="btn btn-primary">Añadir Receta</button>
+        <table class="table table-sm" id="tabla">
+            <thead>
+                <tr>
+                    <th>N</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </div>
+    
     <!-- JavaScript -->
     <script src="../static/js/main.js"></script>
 </body>

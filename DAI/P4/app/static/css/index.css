@@ -1,13 +1,44 @@
-/* Modo Nocturno */
-.far.fa-moon{
-    font-size: 24px;
-    text-decoration: none;
-    color: black;
+/* NAVBAR */
 
-    margin-right: 1%;
-    margin-top: 0.5%;
-    margin-bottom: 0.5%;   
-}
-body.dark .far.fa-moon{
-    color: blue;
-}
+    /* Fondo */
+    .navbar.bg-body-tertiary{
+        padding: 0.65%;
+        background-color: #d8e3e7 !important;
+    }
+
+    /* Título */
+    .navbar-brand{
+        color: #2d4a55;
+        font-size: 30px;
+    }
+
+    /* Modo Nocturno */
+    .fas.fa-moon{
+        font-size: 24px;
+        text-decoration: none;
+        color: black;
+    }
+    body.dark .fas.fa-moon{
+        color: blue;
+    }
+
+    /* Búsqueda */
+    .btn.btn-outline-success{
+        color: green;
+    }
+    .btn.btn-outline-success:hover{
+        background-color: orange;
+    }
+
+/* BODY */
+    .contenido{
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+
+    /* Tabla */
+    .table.table-sm{
+        margin-top: 2%;
+    }
