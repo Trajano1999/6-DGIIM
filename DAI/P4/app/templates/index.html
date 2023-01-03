@@ -58,7 +58,46 @@
     
     <!-- Contenido -->
     <div class="contenido">
-        <button type="button" class="btn btn-primary">Add Recipe</button>
+
+        <!-- Botón Añadir -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddRecipe">
+            Add Recipe
+        </button>
+
+        <div class="modal fade" id="AddRecipe" tabindex="-1" aria-labelledby="AddRecipe" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Add Recipe</h1>
+                    </div>
+                    <div class="modal-body">
+                        <form enctype="multipart/form-data" action="/api/recipes/" method="post" id="add-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                                <p id="textHelp" class="form-text">A name for the recipe</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="ingredients">Ingredients</label>
+                                <textarea class="form-control" id="ingredients" name="ingredients" rows="3"></textarea>
+                                <p id="textAreaHelp1" class="form-text">The components recipe, in lines</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="instructions">Instructions</label>
+                                <textarea class="form-control" id="instructions" name="instructions" rows="3"></textarea>
+                                <p id="textAreaHelp2" class="form-text">The instructions, in lines</p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button onclick="addRecipe()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tabla -->
         <table class="table table-sm" id="tabla">
             <thead>
                 <tr>

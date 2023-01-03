@@ -37,6 +37,7 @@ else
 const recetas = []              // declaraciones   
 let html_str  = ''              // de variables
 let i         = 0               //
+let global_i  = 0               // necesaria para el modal de eliminación
 
 // fetch devuelve una promise
 fetch('/api/recipes')           // GET por defecto,
@@ -88,8 +89,8 @@ fetch('/api/recipes')           // GET por defecto,
                                     </div>
                                 </div>
                             </div>
-                                        
-                            <button onclick="eliminar('${i-1}')" type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                     
+                            <button onclick="previo_eliminar('${i-1}')" type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
                                 Delete
                             </button>
 
@@ -97,14 +98,14 @@ fetch('/api/recipes')           // GET por defecto,
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="deleteTitle">Delete Recipe</h1>
+                                            <h1 class="modal-title fs-5">Delete Recipe</h1>
                                         </div>
                                         <div class="modal-body">
                                             Are you sure you want to remove it completely? There is no way back.
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button onclick="aplicar_eliminacion('${i-1}')" type="button" class="btn btn-primary">Delete</button>
+                                            <button onclick="eliminar()" type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Delete</button>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +116,8 @@ fetch('/api/recipes')           // GET por defecto,
     document.getElementById('tbody').innerHTML=html_str  // se pone el html en su sitio
 })
 
-function detalle(i) {  // saca un modal con la información de cada coctel
+// muestra la información de la receta seleccionada
+function detalle(i){
     let html_titulo = `<h1>${recetas[i].name}</h1>`
     let html_cuerpo = ''
 
@@ -142,50 +144,59 @@ function detalle(i) {  // saca un modal con la información de cada coctel
     document.getElementById('detailBody').innerHTML=html_cuerpo
 }
 
-function editar(i) {
-    let html_cuerpo = `<form enctype="multipart/form-data" action="/api/recipes/" method="put" id="edit-form">
-                        <div class="form-group">
-                        <label for="name">Nombre Receta</label>
-                        <input type="text" class="form-control" id="name" name="name" value="${recetas[i].name}">
-                        <div id="textHelp" class="form-text">Nombre de la receta</div>
-                      </div>`
+// permite editar una receta seleccionada
+function editar(i){
+}
 
-    html_cuerpo += `<div class="form-group">
-                        <label for="ingredients">Ingredientes:</label>
-                        <textarea class="form-control" id="ingredients" name="ingredients" rows="3">`
+// añade una nueva receta creada
+function addRecipe(){
+    var object = {};
+    let formData = new FormData(document.getElementById('add-form'));
 
-    recetas[i].ingredients.forEach(ingredient => {
-        if(ingredient == recetas[i].ingredients[recetas[i].ingredients.length-1]) {
-            html_cuerpo += `${ingredient.name}`
-        }
+    object['name'] = formData.get('name')
+    object['instructions'] = []
+    object['ingredients'] = []
 
-        else{
-            html_cuerpo += `${ingredient.name}\n`
-        }
-    })
+    if (formData.get('instructions')){
+        object['instructions'] = formData.get('instructions').split('\n');
+    }
 
-    html_cuerpo += `</textarea>
-                    <div id="textAreaHelp" class="form-text">Un ingrediente por línea</div>
-                      </div>
-                      <div class="form-group">
-                        <label for="instructions">Instrucciones:</label>
-                        <textarea class="form-control" id="instructions" name="instructions" rows="3">`
+    if (formData.get('ingredients')){
+        let ingredients_list = formData.get('ingredients').split('\n');
+        ingredients_list.forEach(ingredient => {
+            object['ingredients'].push({"name": ingredient})
+        });
+    }
 
-    recetas[i].instructions.forEach(instruction => {
-        if(instruction === recetas[i].instructions[recetas[i].instructions.length-1]) {
-            html_cuerpo += `${instruction}`
-        }
+    let json = JSON.stringify(object);
 
-        else{
-            html_cuerpo += `${instruction}\n`
-        }
-    })
+    fetch("/api/recipes/",
+        {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: json
+        }).then(res => res.json())
+        .then(res => console.log(res));
 
-    html_cuerpo += `</textarea>
-                    <div id="textAreaHelp" class="form-text">Una instruccion por línea</div>
-                      </div>
-                    </form>
-                    `
+    window.location.reload();
+}
 
-    document.getElementById('edit').innerHTML=html_cuerpo
+// modifica el valor de la variable global_i para poder eliminar el elemento i-ésimo en la función eliminar
+function previo_eliminar(i){
+    global_i = i
+}
+
+// elimina la receta seleccionada
+function eliminar(){
+    let url = "/api/recipes/" + recetas[global_i]._id.$oid
+
+    fetch(url,
+        {
+            method: 'DELETE'
+    });
+    
+    window.location.reload();
 }

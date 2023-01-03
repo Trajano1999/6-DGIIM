@@ -105,3 +105,20 @@
     body.dark .table.table-sm button{
         color: white;
     }
+
+    /* Ventanas modales */
+    .modal.fade{
+        font-size: 20px !important;
+        transition: .3s ease all;
+    }
+    body.tiny .modal.fade{
+        font-size: 16px !important;
+        transition: .3s ease all;
+    }
+    body.dark .modal-content{
+        background-color: #444444;
+        color: white !important;
+    }
+    body.dark .modal-content p{
+        color: white !important;
+    }
