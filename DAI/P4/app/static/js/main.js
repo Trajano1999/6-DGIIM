@@ -49,15 +49,66 @@ fetch('/api/recipes')           // GET por defecto,
         html_str += `<tr>
                         <td>${i}</td>
                         <td>
-                            <button onclick="detalle('${i-1}')" 
-                                    type="button" class="btn btn-outline btn-sm"
-                                    data-bs-toggle="modal" data-bs-target="#detailModal">
-                            ${fila.name}
+                            <button onclick="detalle('${i-1}')" type="button" class="btn btn-outline btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">
+                                ${fila.name}
                             </button>
+
+                            <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="labelModal" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="detailTitle"></h1>
+                                        </div>
+                                        <div class="modal-body" id="detailBody">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-warning btn-sm">Edit</button>
-                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                            <button onclick="editar('${i-1}')" type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
+                                Edit
+                            </button>
+
+                            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="labelModal" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="editTitle">Edit Recipe</h1>
+                                        </div>
+                                        <div class="modal-body" id="editBody">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button onclick="aplicar_edicion('${i-1}')" type="button" class="btn btn-primary">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                        
+                            <button onclick="eliminar('${i-1}')" type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                Delete
+                            </button>
+
+                            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="labelModal" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="deleteTitle">Delete Recipe</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to remove it completely? There is no way back.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button onclick="aplicar_eliminacion('${i-1}')" type="button" class="btn btn-primary">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>`         // ES6 templates
     });
@@ -65,5 +116,76 @@ fetch('/api/recipes')           // GET por defecto,
 })
 
 function detalle(i) {  // saca un modal con la información de cada coctel
-// saca un modal con receta[i]
+    let html_titulo = `<h1>${recetas[i].name}</h1>`
+    let html_cuerpo = ''
+
+    // rellenamos el modal
+    html_cuerpo += `<h3>Ingredients</h3>
+                    <ul>
+                    `
+    recetas[i].ingredients.forEach(ingrediente => {
+        html_cuerpo += `<li>${ingrediente.name}</li>
+                        `
+    })
+    html_cuerpo += `</ul>
+                    <h3>Instructions</h3>
+                    <ul>
+                    `
+    recetas[i].instructions.forEach(instruction => {
+        html_cuerpo += `<li>${instruction}</li>
+                        `
+    })
+    html_cuerpo += `</ul>`
+
+    // aplicamos valores
+    document.getElementById('detailTitle').innerHTML=html_titulo
+    document.getElementById('detailBody').innerHTML=html_cuerpo
+}
+
+function editar(i) {
+    let html_cuerpo = `<form enctype="multipart/form-data" action="/api/recipes/" method="put" id="edit-form">
+                        <div class="form-group">
+                        <label for="name">Nombre Receta</label>
+                        <input type="text" class="form-control" id="name" name="name" value="${recetas[i].name}">
+                        <div id="textHelp" class="form-text">Nombre de la receta</div>
+                      </div>`
+
+    html_cuerpo += `<div class="form-group">
+                        <label for="ingredients">Ingredientes:</label>
+                        <textarea class="form-control" id="ingredients" name="ingredients" rows="3">`
+
+    recetas[i].ingredients.forEach(ingredient => {
+        if(ingredient == recetas[i].ingredients[recetas[i].ingredients.length-1]) {
+            html_cuerpo += `${ingredient.name}`
+        }
+
+        else{
+            html_cuerpo += `${ingredient.name}\n`
+        }
+    })
+
+    html_cuerpo += `</textarea>
+                    <div id="textAreaHelp" class="form-text">Un ingrediente por línea</div>
+                      </div>
+                      <div class="form-group">
+                        <label for="instructions">Instrucciones:</label>
+                        <textarea class="form-control" id="instructions" name="instructions" rows="3">`
+
+    recetas[i].instructions.forEach(instruction => {
+        if(instruction === recetas[i].instructions[recetas[i].instructions.length-1]) {
+            html_cuerpo += `${instruction}`
+        }
+
+        else{
+            html_cuerpo += `${instruction}\n`
+        }
+    })
+
+    html_cuerpo += `</textarea>
+                    <div id="textAreaHelp" class="form-text">Una instruccion por línea</div>
+                      </div>
+                    </form>
+                    `
+
+    document.getElementById('edit').innerHTML=html_cuerpo
 }
