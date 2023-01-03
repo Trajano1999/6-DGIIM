@@ -28,33 +28,10 @@
                 <a class="fas fa-text-height" id="text-height"></a>
             </div> 
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Cocktails" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" id="busqueda" onkeyup="buscar()" placeholder="Cocktails" aria-label="Search">
             </form>
         </div>
     </nav>
-
-    <!-- Pruebas
-    <div class="modal-body">
-        <form enctype="multipart/form-data" action="/api/recipes/" method="post" id="add-form">
-            <div class="form-group">
-              <label for="name">Nombre Receta</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Introduzca un nombre">
-                <div id="textHelp" class="form-text">Nombre de la receta</div>
-            </div>
-            <div class="form-group">
-              <label for="ingredients">Ingredientes:</label>
-              <textarea class="form-control" id="ingredients" name="ingredients" rows="3"></textarea>
-                <div id="textAreaHelp1" class="form-text">Un ingrediente por línea</div>
-            </div>
-            <div class="form-group">
-              <label for="instructions">Instrucciones:</label>
-              <textarea class="form-control" id="instructions" name="instructions" rows="3"></textarea>
-                <div id="textAreaHelp2" class="form-text">Una instruccion por línea</div>
-            </div>
-        </form>
-    </div>
-    -->
     
     <!-- Contenido -->
     <div class="contenido">
@@ -64,6 +41,7 @@
             Add Recipe
         </button>
 
+        <!-- Modal del botón de añadir -->
         <div class="modal fade" id="AddRecipe" tabindex="-1" aria-labelledby="AddRecipe" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

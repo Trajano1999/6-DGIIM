@@ -31,6 +31,29 @@ else
     document.body.classList.remove('tiny');
 
 // ----------------------------------------------------------------------------
+// Búsqueda
+// ----------------------------------------------------------------------------
+
+function buscar(){
+    var td, i, txtValue
+    var entrada = document.getElementById("busqueda")
+    var filtro  = entrada.value.toUpperCase()
+    var tabla   = document.getElementById("tabla")
+    var tr      = tabla.getElementsByTagName("tr")
+  
+    for(i = 0; i < tr.length; i++){
+        td = tr[i].getElementsByTagName("td")[1]
+        if(td){
+            txtValue = td.textContent || td.innerText
+            if (txtValue.toUpperCase().indexOf(filtro) > -1)
+                tr[i].style.display = ""
+            else
+                tr[i].style.display = "none"
+        }
+    }
+}
+
+// ----------------------------------------------------------------------------
 // Main
 // ----------------------------------------------------------------------------
 
@@ -84,7 +107,7 @@ fetch('/api/recipes')           // GET por defecto,
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button onclick="aplicar_edicion('${i-1}')" type="button" class="btn btn-primary">Apply</button>
+                                            <button onclick="aplicar_edicion()" type="button" class="btn btn-primary">Apply</button>
                                         </div>
                                     </div>
                                 </div>
@@ -116,6 +139,10 @@ fetch('/api/recipes')           // GET por defecto,
     document.getElementById('tbody').innerHTML=html_str  // se pone el html en su sitio
 })
 
+// ----------------------------------------------------------------------------
+// Ver receta
+// ----------------------------------------------------------------------------
+
 // muestra la información de la receta seleccionada
 function detalle(i){
     let html_titulo = `<h1>${recetas[i].name}</h1>`
@@ -144,9 +171,93 @@ function detalle(i){
     document.getElementById('detailBody').innerHTML=html_cuerpo
 }
 
+// ----------------------------------------------------------------------------
+// Editar receta
+// ----------------------------------------------------------------------------
+
 // permite editar una receta seleccionada
 function editar(i){
+    let html_cuerpo = `<form enctype="multipart/form-data" action="/api/recipes/" method="put" id="edit-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="${recetas[i].name}">
+                            <p id="textHelp" class="form-text">A name for the recipe</p>
+                        </div>`
+
+    html_cuerpo += `<div class="form-group">
+                        <label for="ingredients">Ingredients</label>
+                        <textarea class="form-control" id="ingredients" name="ingredients" rows="3">`
+
+    recetas[i].ingredients.forEach(ingredient => {
+        if(ingredient == recetas[i].ingredients[recetas[i].ingredients.length-1])
+            html_cuerpo += `${ingredient.name}`
+        else
+            html_cuerpo += `${ingredient.name}\n`
+    })
+
+    html_cuerpo += `    </textarea>
+                        <p id="textAreaHelp1" class="form-text">The components recipe, in lines</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="instructions">Instructions</label>
+                        <textarea class="form-control" id="instructions" name="instructions" rows="3">`
+
+    recetas[i].instructions.forEach(instruction => {
+        if(instruction === recetas[i].instructions[recetas[i].instructions.length-1])
+            html_cuerpo += `${instruction}`
+        else
+            html_cuerpo += `${instruction}\n`
+    })
+
+    html_cuerpo += `    </textarea>
+                        <p id="textAreaHelp2" class="form-text">The instructions, in lines</p>
+                    </div>
+                    </form>
+                    `
+    
+    global_i = i    // para poder aplicar la edición después
+    document.getElementById('editBody').innerHTML=html_cuerpo
 }
+
+// aplica los cambios realizados en la edición
+function aplicar_edicion(){
+    var object = {};
+    let formData = new FormData(document.getElementById('edit-form'));
+
+    object['name'] = formData.get('name');
+    object['instructions'] = [];
+    object['ingredients'] = []
+
+    if (formData.get('instructions')){
+        object['instructions'] = formData.get('instructions').split('\n');
+    }
+
+    if (formData.get('ingredients')){
+        let ingredients_list = formData.get('ingredients').split('\n');
+        ingredients_list.forEach(ingredient => {
+            object['ingredients'].push({"name": ingredient})
+        });
+    }
+
+    let json = JSON.stringify(object);
+    let url = '/api/recipes/' + recetas[global_i]._id.$oid
+
+    fetch(url,
+        {
+            method: 'PUT',
+            headers: {
+                //'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: json
+        }).then(res => res.json())
+        .then(res => console.log(res));
+    window.location.reload();
+}
+
+// ----------------------------------------------------------------------------
+// Añadir receta
+// ----------------------------------------------------------------------------
 
 // añade una nueva receta creada
 function addRecipe(){
@@ -183,6 +294,10 @@ function addRecipe(){
 
     window.location.reload();
 }
+
+// ----------------------------------------------------------------------------
+// Eliminar receta
+// ----------------------------------------------------------------------------
 
 // modifica el valor de la variable global_i para poder eliminar el elemento i-ésimo en la función eliminar
 function previo_eliminar(i){
