@@ -34,21 +34,21 @@ else
 // Búsqueda
 // ----------------------------------------------------------------------------
 
-function busqueda(){
-    let formData = new FormData(document.getElementById('search-form'));
-    let html_body  = '<table>'
-    let endpoint = '/recetas_de/' + formData.get('search-param');
+function buscar(){
+    let formData  = new FormData(document.getElementById('search-form'));
+    let html_body = '<table>'
+    let endpoint  = '/recetas_de/' + formData.get('searchInput');
 
     fetch(endpoint)
         .then(res => res.json())
         .then(filas => {
             filas.forEach(fila => {
-                html_body+= `<tr>
+                html_body += `<tr>
                                 <td>
                                     ${fila.name}
                                 </td>
-                             </tr>
-                `
+                              </tr>
+                             `
             });
             html_body += `</table>`
             document.getElementById('search').innerHTML = html_body;
