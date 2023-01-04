@@ -34,23 +34,25 @@ else
 // Búsqueda
 // ----------------------------------------------------------------------------
 
-function buscar(){
-    var td, i, txtValue
-    var entrada = document.getElementById("busqueda")
-    var filtro  = entrada.value.toUpperCase()
-    var tabla   = document.getElementById("tabla")
-    var tr      = tabla.getElementsByTagName("tr")
-  
-    for(i = 0; i < tr.length; i++){
-        td = tr[i].getElementsByTagName("td")[1]
-        if(td){
-            txtValue = td.textContent || td.innerText
-            if (txtValue.toUpperCase().indexOf(filtro) > -1)
-                tr[i].style.display = ""
-            else
-                tr[i].style.display = "none"
-        }
-    }
+function busqueda(){
+    let formData = new FormData(document.getElementById('search-form'));
+    let html_body  = '<table>'
+    let endpoint = '/recetas_de/' + formData.get('search-param');
+
+    fetch(endpoint)
+        .then(res => res.json())
+        .then(filas => {
+            filas.forEach(fila => {
+                html_body+= `<tr>
+                                <td>
+                                    ${fila.name}
+                                </td>
+                             </tr>
+                `
+            });
+            html_body += `</table>`
+            document.getElementById('search').innerHTML = html_body;
+        })
 }
 
 // ----------------------------------------------------------------------------

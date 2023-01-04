@@ -63,13 +63,8 @@ def routeRecetasDe(elemento):
     for receta in recetas:
         app.logger.debug(receta)
         lista_recetas.append(receta)
-    
-    response = {
-        'len': len(lista_recetas),
-        'data': lista_recetas
-    }
 
-    resJson = dumps(response)
+    resJson = dumps(lista_recetas)
     return Response(resJson, mimetype='application/json')
 
 @app.route('/recetas_con/<string:elemento>/')

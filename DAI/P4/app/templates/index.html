@@ -27,8 +27,23 @@
                 <a class="fas fa-moon" id="night-mode"></a>
                 <a class="fas fa-text-height" id="text-height"></a>
             </div> 
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" id="busqueda" onkeyup="buscar()" placeholder="Cocktails" aria-label="Search">
+            <form onsubmit="return false;" id="search-form" class="d-flex" role="search">
+                <input id="search-param" class="form-control me-2" type="search" name="search-param" placeholder="Search" aria-label="Search">
+                <button onclick="busqueda()" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#searchModal">Search</button>
+                <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="searchModalLabel">Resultados Búsquedas</h1>
+                            </div>
+                            <div class="modal-body" id="search">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </nav>
